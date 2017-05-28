@@ -11,6 +11,29 @@
 |
 */
 
-$app->get('/', function() use ($app) {
-    return $app->welcome();
-});
+$app->get('/teachers', 'TeacherController@index');
+$app->post('/teachers', 'TeacherController@store');
+$app->get('/teachers/{teachers}', 'TeacherController@show');
+$app->put('/teachers/{teachers}', 'TeacherController@update');
+$app->patch('/teachers/{teachers}', 'TeacherController@update');
+$app->delete('/teachers/{teachers}', 'TeacherController@destroy');
+
+$app->get('/students', 'StudentController@index');
+$app->post('/students', 'StudentController@store');
+$app->get('/students/{teachers}', 'StudentController@show');
+$app->put('/students/{teachers}', 'StudentController@update');
+$app->patch('/students/{teachers}', 'StudentController@update');
+$app->delete('/students/{teachers}', 'StudentController@destroy');
+
+$app->get('courses', 'CourseController@index');
+$app->get('courses/{courses}', 'CourseController@show');
+
+$app->get('/teachers/{teachers}/courses', 'TeacherCourseController@index');
+$app->post('/teachers/{teachers}/courses', 'TeacherCourseController@store');
+$app->put('/teachers/{teachers}/courses/{courses}', 'TeacherCourseController@update');
+$app->patch('/teachers/{teachers}/courses/{courses}', 'TeacherCourseController@update');
+$app->delete('/teachers/{teachers}/courses/{courses}', 'TeacherCourseController@destroy');
+
+$app->get('courses/{courses}/students', 'CourseStudentController@index');
+$app->post('courses/{courses}/students/{students}', 'CourseStudentController@store');
+$app->delete('courses/{courses}/students/{students}', 'CourseStudentController@destroy');
