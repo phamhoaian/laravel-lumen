@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder {
 			$course->students()->attach(array_rand(range(1, 500), 40));
 		});
 
-		// $this->call('UserTableSeeder');
+		$this->call(OAuthClientSeeder::class);
 	}
 
 }
